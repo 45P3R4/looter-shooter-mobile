@@ -4,7 +4,7 @@ using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
-public class PlayerAttack : MonoBehaviour
+public class PlayerBattle : MonoBehaviour
 {
     [SerializeField] private Bullet bullet;
     private PlayerMovement movement;
@@ -16,8 +16,8 @@ public class PlayerAttack : MonoBehaviour
 
     public void Fire()
     {
-        Debug.Log("Fire");
         Bullet projectile = Instantiate(bullet, transform.position, quaternion.identity);
-        projectile.SetVelocity(movement.GetVelocity());
+        projectile.gameObject.layer = 7; //PlayerBullet
+        projectile.SetVelocity(movement.GetVelocity() != Vector2.zero ? movement.GetVelocity() : Vector2.right);
     }
 }

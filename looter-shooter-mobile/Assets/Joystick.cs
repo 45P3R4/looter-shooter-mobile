@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -20,9 +21,14 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = startPosition + Vector2.ClampMagnitude(eventData.position, radius);
         direction = ((Vector2)transform.position - startPosition).normalized;
-        Debug.Log(direction);
+
+        float distance = Vector2.Distance(eventData.position, startPosition);
+
+        if(distance < 100)
+        {
+            transform.position = eventData.position;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

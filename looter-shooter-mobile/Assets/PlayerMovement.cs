@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Joystick joystick;
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
         velocity.x = Input.GetAxis("Horizontal");
         velocity.y = Input.GetAxis("Vertical");
 
+        //For testing from PC
         if(velocity == Vector2.zero)
         {
             velocity = joystick.GetDirection();
