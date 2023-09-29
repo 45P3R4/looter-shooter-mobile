@@ -455,6 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   hpbar: {fileID: 407214056766982468}
+  speed: 2
   loot:
   - {fileID: -5338917032253964462, guid: 09cfbe2b4256e8045802760a1a6e2e45, type: 3}
   - {fileID: -5338917032253964462, guid: 129a0a8a9cb773748ad39a88985b61a9, type: 3}

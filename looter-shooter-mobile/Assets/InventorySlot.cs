@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class InventorySlot : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField] private Text countText;
+    [SerializeField] public Text countText;
     [SerializeField] private Image spriteBox;
 
     private Item slotItem;

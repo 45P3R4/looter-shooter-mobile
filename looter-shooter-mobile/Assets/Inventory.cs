@@ -63,6 +63,10 @@ public class Inventory : MonoBehaviour
         {
             InventorySlot newSlot = Instantiate(slot, gridParent);
             newSlot.SetItem(item);
+            if(item.getCount() == 1)
+            {
+                Destroy(newSlot.countText.gameObject);
+            }
         }
     }
 }
