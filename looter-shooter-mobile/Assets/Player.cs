@@ -19,4 +19,11 @@ public class Player : Entity
             Destroy(other.gameObject);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.GetComponent<Enemy>())
+        {
+            TakeDamage(20);
+        }
+    }
 }

@@ -6,8 +6,9 @@ public class Enemy : Entity
 {
     [SerializeField] private List<Item> loot;
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.GetComponent<Bullet>())
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.GetComponent<Bullet>())
         {
             TakeDamage(10);
         }

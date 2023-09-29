@@ -8,7 +8,7 @@ public class Entity : MonoBehaviour
     [SerializeField] private HealthBar hpbar;
     private int health;
 
-    private void Start()
+    private void Awake()
     {
         health = maxHealth;
     }
@@ -27,5 +27,10 @@ public class Entity : MonoBehaviour
         {
             death();
         }
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 }
