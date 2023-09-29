@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour
+[RequireComponent(typeof(Image))]
+public class InventorySlot : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Text countText;
     [SerializeField] private Image spriteBox;
@@ -12,6 +14,7 @@ public class InventorySlot : MonoBehaviour
 
     public void SetItem(Item item)
     {
+        slotItem = item;
         countText.text = item.getCount().ToString();
         spriteBox.sprite = item.GetSprite();
     }
@@ -20,4 +23,22 @@ public class InventorySlot : MonoBehaviour
     {
         return slotItem;
     }
+
+    public void SelectSlot()
+    {
+        Inventory inv = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        inv.SelectSlot(this);
+        GetComponent<Image>().color += Color.yellow;
+    }
+
+    public void DeselectSlot()
+    {
+        GetComponent<Image>().color -= Color.yellow;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        SelectSlot();
+    }
+
 }

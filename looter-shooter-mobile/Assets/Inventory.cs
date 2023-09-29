@@ -8,6 +8,17 @@ public class Inventory : MonoBehaviour
     [SerializeField] private InventorySlot slot;
     [SerializeField] private Transform gridParent;
 
+    private InventorySlot selectedSlot;
+
+    public void SelectSlot(InventorySlot selectableSlot)
+    {
+        if(selectedSlot != null)
+        {
+            selectedSlot.DeselectSlot();
+        }
+        selectedSlot = selectableSlot;
+    }
+
     public void AddItem(Item item)
     {
         bool has_equal = false;
@@ -22,6 +33,22 @@ public class Inventory : MonoBehaviour
         if(!has_equal)
         {
             items.Add(item);
+        }
+    }
+
+    public void DeleteSelectedSlot()
+    {
+        if(selectedSlot != null)
+        {
+            foreach(Item i in items)
+            {
+                if(i.GetName() == selectedSlot.getItem().GetName())
+                {
+                    items.Remove(i);
+                    break;
+                }
+            }
+            ShowInventory();
         }
     }
 
