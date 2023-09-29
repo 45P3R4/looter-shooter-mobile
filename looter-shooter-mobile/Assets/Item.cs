@@ -11,6 +11,7 @@ public class Item : MonoBehaviour
     [SerializeField] private String itemName = "nameless";
 
     private SpriteRenderer srender;
+    private int count = 1;
 
     private void Start()
     {
@@ -27,5 +28,15 @@ public class Item : MonoBehaviour
     public String GetName()
     {
         return itemName;
+    }
+
+    public int getCount()
+    {
+        return count;
+    }
+
+    public void AddCount(int newCount)
+    {
+        count += newCount;
     }
 }

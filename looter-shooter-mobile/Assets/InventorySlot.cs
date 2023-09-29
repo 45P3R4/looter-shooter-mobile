@@ -9,33 +9,15 @@ public class InventorySlot : MonoBehaviour
     [SerializeField] private Image spriteBox;
 
     private Item slotItem;
-    private int itemCount;
 
-    public void SetItem(Item item, int count)
+    public void SetItem(Item item)
     {
-        countText.text = count.ToString();
+        countText.text = item.getCount().ToString();
         spriteBox.sprite = item.GetSprite();
-        itemCount = count;
-    }
-
-    public int GetCount()
-    {
-        return itemCount;
-    }
-
-    public void SetCount(int newCount)
-    {
-        countText.text = newCount.ToString();
-        itemCount = newCount;
     }
 
     public Item getItem()
     {
         return slotItem;
-    }
-
-    public void SetItem(Item item)
-    {
-        slotItem = item;
     }
 }

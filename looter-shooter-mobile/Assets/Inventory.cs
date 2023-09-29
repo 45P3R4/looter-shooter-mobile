@@ -10,7 +10,19 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        items.Add(item);
+        bool has_equal = false;
+        foreach(Item i in items)
+        {
+            if(i.GetName() == item.GetName())
+            {
+                has_equal = true;
+                i.AddCount(item.getCount());
+            }
+        }
+        if(!has_equal)
+        {
+            items.Add(item);
+        }
     }
 
     public void ShowInventory()
@@ -23,7 +35,7 @@ public class Inventory : MonoBehaviour
         foreach(Item item in items)
         {
             InventorySlot newSlot = Instantiate(slot, gridParent);
-            newSlot.SetItem(item, 1);
+            newSlot.SetItem(item);
         }
     }
 }
